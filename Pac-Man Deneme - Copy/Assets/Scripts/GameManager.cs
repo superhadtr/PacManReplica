@@ -15,18 +15,18 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        NewGame();
+        NewGame(); //Oyunu baþlatýr
     }
 
     private void Update()
     {
         if(this.lives <=0 && Input.anyKeyDown)
         {
-            NewGame();
+            NewGame(); //Karakter ölürse yeniden baþlatýr
         }
     }
 
-    private void NewGame()
+    private void NewGame() //Yeni oyuna baþlama fonksiyonu
     {
         SetScore(0);
         SetLives(3);
@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
 
     public void MobEaten(Mob mob)
     {
-        SetScore(this.score + Mob.Points);
+        SetScore(this.score + Mob.Points); //Yaratýk yeme puaný
     }
 
     public void PacmanEaten()
@@ -83,8 +83,8 @@ public class GameManager : MonoBehaviour
         this.Pacman.gameObject.SetActive(false);
         if (this.lives > 0)
         {
-            //Öldükten sonra delay
-            Invoke(nameof(ResetState), 3f);
+            
+            Invoke(nameof(ResetState), 3f); //Öldükten sonra delay
             ResetState();
         }
         else { GameOver (); }
