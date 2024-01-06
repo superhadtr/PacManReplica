@@ -40,10 +40,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void NewGame() //Yeni oyuna baþlama fonksiyonu
+    public void NewGame() //Yeni oyuna baþlama fonksiyonu
     {
         SetScore(0);
-        SetLives(3);
+        SetLives(1);
         NewRound();
     }
 
@@ -70,10 +70,6 @@ public class GameManager : MonoBehaviour
 
     private void ResetState()
     {
-        for (int i = 0; i < this.mob.Length; i++)
-        {
-            this.mob[i].ResetState();
-        }
 
         this.Pacman.ResetState();
     }
@@ -101,7 +97,7 @@ public class GameManager : MonoBehaviour
         {
             
             Invoke(nameof(ResetState), 3f); //Öldükten sonra delay
-            ResetState();
+            NewGame();
         }
         else { GameOver (); }
     }

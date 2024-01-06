@@ -7,7 +7,11 @@ public class Keys : MonoBehaviour
     public static int keys = 0;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        keys++;
-        Destroy(gameObject);
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Pacman"))
+        {
+            keys++;
+            Destroy(gameObject);
+        }
+            
     }
 }

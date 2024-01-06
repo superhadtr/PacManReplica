@@ -75,6 +75,7 @@ public class Mob : MonoBehaviour
     }
 }*/
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [DefaultExecutionOrder(-10)]
 [RequireComponent(typeof(Movement))]
@@ -86,6 +87,7 @@ public class Mob : MonoBehaviour
     public GhostChase chase { get; private set; }
     public GhostFrightened frightened { get; private set; }
     public GhostBehavior initialBehavior;
+    public GameManager GameManager;
     public Transform target;
     public static int Points = 200;
 
@@ -129,20 +131,18 @@ public class Mob : MonoBehaviour
         position.z = transform.position.z;
         transform.position = position;
     }
+    
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Pacman"))
         {
-            if (frightened.enabled)
-            {
-                GameManager.Instance.MobEaten(this);
-            }
-            else
-            {
-                GameManager.Instance.PacmanEaten();
-            }
+            string currentSceneName = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene(currentSceneName);
+            Debug.Log("AAAAAAAAAAAAAAAAAAAAA");
         }
+        Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaa");
+
     }
 
 }
