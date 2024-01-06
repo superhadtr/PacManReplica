@@ -66,7 +66,7 @@ public class Movement : MonoBehaviour
 
     public bool Occupied(Vector2 direction)
     {
-        RaycastHit2D hit = Physics2D.BoxCast(this.transform.position, Vector2.one * 0.75f, 0.0f, direction, 1.5f, wallLayer);
+        RaycastHit2D hit = Physics2D.BoxCast(this.transform.position, Vector2.one * 0.9f, 0.0f, direction, 0.5f, wallLayer);
         //Raycast BoxCast çünkü tilelar ile uyumlu olmasý lazým. Parantez içi sýrasýyla = (Konum, Boyut, Açýsý, Yönü, Uzaklýðý)
         return hit.collider != null;
         //Raycast þeye çarparsa collider null olmayacak, çarparsan olacak (Occupied durumu)       
